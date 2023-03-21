@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <h1 class="text-4xl font-bold mb-10 text-center">Ajouter Une Nouvelle Modele</h1>
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">> 
                         @csrf
                         <div class="mb-6">
                             <label for="mat" class="block mb-2 text-sm font-medium text-gray-900">Matricule</label>

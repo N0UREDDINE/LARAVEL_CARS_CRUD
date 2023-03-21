@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MarqueController;
 use App\Http\Controllers\ModeleController;
 use App\Http\Controllers\VoitureController;
+use App\Http\Controllers\employeController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -19,13 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {return view('dashboard');})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,6 +41,18 @@ Route::put('/marque/{marque}/edit', [MarqueController::class, 'update']);
 
 Route::delete('/{marque}', [MarqueController::class, 'destroy'])->name('destroy');
 // End Marque Routes -----------------------------------------------------------------
+
+// Start Employe Routes -----------------------------------------------------------------
+Route::get('/employe', [employeController::class, 'index'])->name('employe');
+
+Route::get('/employe/ajouter', [employeController::class, 'create']);
+Route::post('/employe/ajouter', [employeController::class, 'store']);
+
+Route::get('/employe/{employe}/edit', [employeController::class, 'edit']);
+Route::put('/employe/{employe}/edit', [employeController::class, 'update']);
+
+Route::delete('/employe/{employe}', [employeController::class, 'destroy'])->name('destroyEmploye');
+// End Employe Routes -----------------------------------------------------------------
 
 // Start Modele Routes -----------------------------------------------------------------
 Route::get('/modele', [ModeleController::class, 'index'])->name('modele');

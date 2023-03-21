@@ -13,9 +13,7 @@ class MarqueController extends Controller
     public function index()
     {
         $marques = Marque::all();
-        return view('marque.ListerMarques', [
-            'marques' => $marques
-        ]);
+        return view('marque.ListerMarques', ['marques' => $marques]);
     }
 
     /**
@@ -28,7 +26,7 @@ class MarqueController extends Controller
 
     /**
      * Store a newly created resource in storage.
-      */
+     */
     public function store(Request $request)
     {
         $nouvelleMarque = Marque::create([
@@ -61,7 +59,7 @@ class MarqueController extends Controller
         session()->flash('success', 'Marque updated successfully.');
         return redirect('/marque');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      */
